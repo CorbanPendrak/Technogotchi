@@ -7,14 +7,24 @@ modules for more extensibility
 - [ ] Descriptive README file
 - [ ] Basic Tamagotchi class
 - [ ] Create basic icons
-- [ ] Picture display
+- [ ] Tkinter picture display
 - [ ] E-ink display
-- [ ] 
 - [ ] Todoist Sync
 - [ ] Habitica Sync
 - [ ] Extension API / template
 
 # Ideas
+- Games are individual methods that return a dictionary of impact
+  - {"food":3, "happiness":-2}
+  - Check keys if class has attribute
+- Grow into different pets
+- Breedable stats
+  - Intelligence, Wisdom, Charisma ...
+  - Games based on stats
+- Stores data in files
+- Coin based games/food
+  - Outer game?
+  - Unique to pet?
 - Unique OS
 - Manipulate OS Module
   - Cleanup waste files
