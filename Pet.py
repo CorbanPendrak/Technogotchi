@@ -4,6 +4,7 @@ author: Corban Pendrak
 date: 25Apr25
 purpose: Create the basic pet functionality for Technogotchi
 """
+from foods import food_items
 
 
 def describe_attribute(attribute):
@@ -57,6 +58,7 @@ class Pet:
         self.image = ""
 
         # Can be overwritten in new pets
+        self.__recipes = food_items
         self.age_levelup = [4, 8] # when pet levels up based on age
         self.age_levelup_advanced = 5 # when pet levels up after passing final age_levelup
 
@@ -142,6 +144,30 @@ class Pet:
     @level.setter
     def level(self, level):
         self.__level = level
+
+    @property
+    def recipes(self):
+        recipes = []
+
+        for recipe in self.__recipes:
+            if recipe[0] == 0 or self.level >= recipe[0]:
+                recipes.append(recipe)
+
+        return recipes
+
+    @recipes.setter
+    def recipes(self, recipes: list):
+        """
+        Currently only adds to the list of recipes
+        :param recipes: new recipes
+        :return:
+        """
+        self.__recipes.append(recipes)
+
+    def update_dict(self, update: dict):
+        for key, value in update.items():
+            if hasattr(self, key):
+                setattr(self, key, getattr(self, key) + value)
 
     def print_box(self):
         image_width = max([len(line) for line in self.image])

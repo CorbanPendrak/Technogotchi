@@ -54,15 +54,18 @@ class TerminalInteraction(AbstractInteraction):
         while True:
             self.pet.print_box()
 
-            options = ["Play", "Feed", "Quit"]
+            options = ["Play", "Feed", "Display stats", "Quit"]
 
             user_choice = print_menu(options, "What do you want to do?")
+            print()
 
             match user_choice:
                 case "Play":
                     self.play()
                 case "Feed":
                     self.feed()
+                case "Display stats":
+                    self.display_stats()
                 case "Quit":
                     print("Thank you for playing!")
                     return
@@ -73,4 +76,14 @@ class TerminalInteraction(AbstractInteraction):
         print("Your pet loves you!\n")
 
     def feed(self):
-        print("Your pet loves the food more!\n")
+        foods = self.pet.recipes
+        print("Available food items:")
+        food_choice = print_menu([food[1] for food in foods])
+        food_method = next(food[2] for food in foods if food[1] == food_choice)
+        self.pet.update_dict(food_method())
+        print()
+
+    def display_stats(self):
+        print("Your pet's stats:")
+        print(self.pet)
+        print()

@@ -6,6 +6,10 @@ modules for more extensibility
 # Roadmap
 - [ ] Descriptive README file
 - [ ] Basic Tamagotchi class
+  - [x] Pet class
+  - [x] Terminal interactions
+  - [ ] Games
+  - [ ] Food
 - [ ] Create basic icons
 - [ ] Tkinter picture display
 - [ ] E-ink display
