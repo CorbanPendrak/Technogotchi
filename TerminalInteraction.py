@@ -6,6 +6,11 @@ purpose: Implement interaction for Technogotchi via terminal interface
 """
 from AbstractInteraction import AbstractInteraction
 from Pet import Pet
+import os
+from time import sleep
+
+
+PAUSE = 3
 
 
 def print_menu(options: list, input_prompt:str="Choice: ") -> str:
@@ -52,6 +57,7 @@ class TerminalInteraction(AbstractInteraction):
     def main(self):
         print()
         while True:
+            os.system('cls' if os.name == 'nt' else 'clear')
             self.pet.print_box()
 
             options = ["Play", "Feed", "Display stats", "Quit"]
@@ -73,17 +79,26 @@ class TerminalInteraction(AbstractInteraction):
                     print("Sorry! Please choose from the menu")
 
     def play(self):
-        print("Your pet loves you!\n")
+        games = self.pet.games
+        print("Available food items:")
+        game_choice = print_menu([game[1] for game in games])
+        game_method = next(game[2] for game in games if game[1] == game_choice)
+        print()
+        self.pet.update_dict(game_method(self.pet))
+        print()
 
     def feed(self):
         foods = self.pet.recipes
         print("Available food items:")
         food_choice = print_menu([food[1] for food in foods])
         food_method = next(food[2] for food in foods if food[1] == food_choice)
+        print()
         self.pet.update_dict(food_method())
         print()
+        sleep(PAUSE)
 
     def display_stats(self):
         print("Your pet's stats:")
         print(self.pet)
         print()
+        sleep(PAUSE)

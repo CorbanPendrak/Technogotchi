@@ -8,8 +8,10 @@ modules for more extensibility
 - [ ] Basic Tamagotchi class
   - [x] Pet class
   - [x] Terminal interactions
-  - [ ] Games
-  - [ ] Food
+  - [x] Games
+  - [x] Food
+  - [ ] Save pet to file
+  - [ ] Implement timer
 - [ ] Create basic icons
 - [ ] Tkinter picture display
 - [ ] E-ink display
@@ -25,7 +27,7 @@ modules for more extensibility
 - Breedable stats
   - Intelligence, Wisdom, Charisma ...
   - Games based on stats
-- Stores data in files
+- Encrypt data in files
 - Coin based games/food
   - Outer game?
   - Unique to pet?

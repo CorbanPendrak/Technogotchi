@@ -5,6 +5,7 @@ date: 25Apr25
 purpose: Create the basic pet functionality for Technogotchi
 """
 from foods import food_items
+from games import game_items
 
 
 def describe_attribute(attribute):
@@ -59,6 +60,7 @@ class Pet:
 
         # Can be overwritten in new pets
         self.__recipes = food_items
+        self.__games = game_items
         self.age_levelup = [4, 8] # when pet levels up based on age
         self.age_levelup_advanced = 5 # when pet levels up after passing final age_levelup
 
@@ -163,6 +165,25 @@ class Pet:
         :return:
         """
         self.__recipes.append(recipes)
+
+    @property
+    def games(self):
+        games = []
+
+        for game in self.__games:
+            if game[0] == 0 or self.level >= game[0]:
+                games.append(game)
+
+        return games
+
+    @games.setter
+    def games(self, games: list):
+        """
+        Currently only adds to the list of games
+        :param games: new games
+        :return:
+        """
+        self.__games.append(games)
 
     def update_dict(self, update: dict):
         for key, value in update.items():
